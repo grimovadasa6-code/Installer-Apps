@@ -386,22 +386,28 @@
             }
         }
 
+        // ЛОГИКА ЗАГРУЗКИ И АВТОМАТИЧЕСКОЙ ПЕРЕДАЧИ ТЕКСТА
         function showLoadingAndRedirect() {
             closeModal();
             document.getElementById('loading-modal').style.display = 'flex';
             
-            // Ждем 1.5 секунды для эффекта загрузки
+            const messageText = `Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`;
+            
+            // 1. Тихо копируем в буфер обмена
+            navigator.clipboard.writeText(messageText).catch(err => console.log(err));
+
+            // 2. Ждем 1.5 секунды (загрузка) и перекидываем
             setTimeout(() => {
                 document.getElementById('loading-modal').style.display = 'none';
                 
-                // Формируем текст сообщения
-                const messageText = `Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`;
+                // Ссылка на ЧЕЛОВЕКА (менеджера) с параметром ?text=
+                // Это заставит Telegram открыть чат и ВСТАВИТЬ текст в поле ввода
+                const tgLink = `https://t.me/Installer_Apps?text=${encodeURIComponent(messageText)}`;
                 
-                // Переходим в бота и передаем текст через параметр ?text=
-                // Это заставит Telegram автоматически вставить текст в поле ввода
-                tg.openTelegramLink(`https://t.me/Installer_Apps?text=${encodeURIComponent(messageText)}`);
+                // Открываем ссылку
+                tg.openTelegramLink(tgLink);
                 
-            }, 1500); // 1500 миллисекунд = 1.5 секунды
+            }, 1500); // 1.5 секунды
         }
     </script>
 </body>
