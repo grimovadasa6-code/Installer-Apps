@@ -44,7 +44,7 @@
         .popular-icon img { width: 100%; height: 100%; object-fit: cover; }
         .popular-title { font-size: 12px; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 70px; }
 
-        /* Кнопка Инструкция */
+        /* Кнопка Инструкция на главном */
         .instruction-banner {
             margin: 15px 20px 25px;
             background: var(--primary-blue);
@@ -96,6 +96,7 @@
         .detail-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 5px; }
         .detail-rating { font-size: 14px; font-weight: 500; }
         
+        /* Кнопки на экране приложения */
         .detail-buttons { display: flex; gap: 10px; margin-bottom: 25px; }
         .btn-main { flex: 2; background: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 600; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-sec { flex: 1; background: #e5e5ea; color: var(--text-main); border: none; padding: 15px; border-radius: 15px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
@@ -211,7 +212,7 @@
         <h2 class="section-title">Популярные</h2>
         <div class="horizontal-scroll" id="popular-list"></div>
 
-        <!-- КНОПКА ИНСТРУКЦИИ -->
+        <!-- КНОПКА ИНСТРУКЦИИ НА ГЛАВНОМ -->
         <div class="instruction-banner" onclick="showPage('video-instruction-page')">
             <div class="instruction-icon">▶</div>
             <div class="instruction-text">
@@ -245,7 +246,7 @@
         <div class="detail-container" id="app-detail-content"></div>
     </div>
 
-    <!-- СТРАНИЦА: ВИДЕО-ИНСТРУКЦИЯ -->
+    <!-- СТРАНИЦА: ВИДЕО-ИНСТРУКЦИЯ (Открывается с главного экрана) -->
     <div id="video-instruction-page" class="page">
         <div class="app-detail-header">
             <button class="back-btn" onclick="showPage('main-page')">←</button>
@@ -253,7 +254,6 @@
         </div>
         
         <div class="detail-container">
-            <!-- Встроенный плеер без логотипа и ссылок -->
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/JWmdFyltvTU?rel=0&modestbranding=1&showinfo=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -273,10 +273,10 @@
         </div>
     </div>
 
-    <!-- СТРАНИЦА: ТЕКСТОВАЯ ИНСТРУКЦИЯ (ПОШАГОВАЯ) -->
+    <!-- СТРАНИЦА: ТЕКСТОВАЯ ИНСТРУКЦИЯ (Открывается с карточки приложения) -->
     <div id="text-instruction-page" class="page">
         <div class="app-detail-header">
-            <button class="back-btn" onclick="showPage('main-page')">←</button>
+            <button class="back-btn" onclick="showPage('app-detail-page')">←</button>
             <h2 style="margin: 0; font-size: 18px;">Как установить</h2>
         </div>
         
@@ -308,7 +308,6 @@
                     <div class="step-title">Войдите с выданными данными</div>
                 </div>
                 <div class="step-desc">В том же разделе нажмите «Медиаматериалы и покупки» и введите логин и пароль выданного аккаунта.</div>
-                <!-- ФОТКА 1 (Настройки) -->
                 <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0900.jpeg" class="step-image" onerror="this.style.display='none'">
             </div>
 
@@ -319,7 +318,6 @@
                     <div class="step-title">Откройте „Общие приложения“</div>
                 </div>
                 <div class="step-desc">Выберите нужное приложение и нажмите „Установить“.</div>
-                <!-- ФОТКА 2 (Войти вручную) -->
                 <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/E6374BD0-357B-4341-BF4C-204E39CC85E8.png" class="step-image" onerror="this.style.display='none'">
             </div>
             
@@ -330,16 +328,14 @@
                     <div class="step-title">Найдите и загрузите приложение</div>
                 </div>
                 <div class="step-desc">Найдите приложение в списке покупок и нажмите значок облака рядом с ним.</div>
-                <!-- ФОТКА 3 (Общие приложения) -->
                 <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0906.jpeg" class="step-image" onerror="this.style.display='none'">
             </div>
         </div>
         
-        <!-- Кнопка внизу -->
         <div class="btn-bottom" onclick="showPage('search-page')">🛍️ Выбрать приложение</div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО (КРАТКАЯ ИНСТРУКЦИЯ ИЗ КАРТОЧКИ) -->
+    <!-- МОДАЛЬНОЕ ОКНО (КРАТКАЯ ИНСТРУКЦИЯ ИЗ КАРТОЧКИ - ШТОРКА) -->
     <div class="modal-overlay" id="tutorial-modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">✕</button>
@@ -471,7 +467,8 @@
 
                 <div class="detail-buttons">
                     <button class="btn-main" onclick="openModal()">⬇️ Получить аккаунт</button>
-                    <button class="btn-sec" onclick="showPage('video-instruction-page')">📖 Инструкция</button>
+                    <!-- Кнопка "Как установить" ведет на текстовую инструкцию с фото -->
+                    <button class="btn-sec" onclick="showPage('text-instruction-page')">📖 Как установить</button>
                 </div>
 
                 <div class="detail-stats">
