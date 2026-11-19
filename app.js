@@ -1,6 +1,6 @@
 const apps = [
     // --- Приложения с картинками (по вашим ссылкам) ---
-    { name: 'Авито', desc: 'Шоппинг · Объявления', rating: '4.5', count: '540 тыс.', bg: '#FF5A5F', letter: 'А', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8530.jpeg' },
+    { name: 'Авито', desc: 'Шоппинг · Объявления', rating: '4.5', count: '540 тыс.', bg: '#FF5A5F', letter: 'А', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0793.jpeg' },
     { name: 'Альфа-Банк', desc: 'Финансы · Альфа', rating: '4.7', count: '225 тыс.', bg: '#EF3124', letter: 'А', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8531.jpeg' },
     { name: 'ВКонтакте', desc: 'Соцсети · ВК', rating: '4.5', count: '900 тыс.', bg: '#0077FF', letter: 'В', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8533.jpeg' },
     { name: 'ВТБ Онлайн', desc: 'Финансы', rating: '4.7', count: '3,6 млн', bg: '#0A2896', letter: 'В', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8534.jpeg' },
@@ -25,7 +25,7 @@ const apps = [
     { name: 'Mail', desc: 'Соцсети · Почта', rating: '4.7', count: '2.1 млн', bg: '#005FF9', letter: 'M', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8548.png' },
     { name: 'Nulls Brawl', desc: 'Игры · Приватный сервер', rating: '4.6', count: '540 тыс.', bg: '#2196F3', letter: 'N', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8551.jpeg' },
     
-    // --- Новые картинки, которые вы прислали ---
+    // --- Новые картинки ---
     { name: 'AyuGram', desc: 'Моды Telegram · Клиент', rating: '4.8', count: '45 тыс.', bg: '#6C5CE7', letter: 'A', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8543.jpeg' },
     { name: 'HakoGram', desc: 'Моды Telegram · Клиент', rating: '4.7', count: '32 тыс.', bg: '#0984E3', letter: 'H', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8546.png' },
     { name: 'СберKids', desc: 'Финансы · Детям', rating: '4.5', count: '120 тыс.', bg: '#00B894', letter: 'С', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8538.jpeg' },
