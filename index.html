@@ -392,7 +392,6 @@
             }
         }
 
-        // ЛОГИКА ЗАГРУЗКИ И РЕДИРЕКТА
         let timerInterval;
         
         function showLoadingAndRedirect() {
@@ -403,7 +402,6 @@
             document.getElementById('timer').innerText = timeLeft + ' сек';
             document.getElementById('timer-inline').innerText = timeLeft;
 
-            // Имитация проверки аккаунта
             timerInterval = setInterval(() => {
                 timeLeft--;
                 document.getElementById('timer').innerText = timeLeft + ' сек';
@@ -411,7 +409,6 @@
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    // Когда время вышло - копируем текст и перекидываем
                     requestAccount();
                 }
             }, 1000);
@@ -427,10 +424,11 @@
             
             const messageText = `Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`;
             
+            // Копируем без вывода окон
             navigator.clipboard.writeText(messageText).then(() => {
-                tg.openTelegramLink(`https://t.me/Installer_Apps`);
+                tg.openTelegramLink(`https://t.me/Installer_Apps?text=${encodeURIComponent(messageText)}`);
             }).catch(err => {
-                tg.openTelegramLink(`https://t.me/Installer_Apps`);
+                tg.openTelegramLink(`https://t.me/Installer_Apps?text=${encodeURIComponent(messageText)}`);
             });
         }
     </script>
