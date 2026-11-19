@@ -44,7 +44,7 @@
         .popular-icon img { width: 100%; height: 100%; object-fit: cover; }
         .popular-title { font-size: 12px; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 70px; }
 
-        /* НОВАЯ КНОПКА ИНСТРУКЦИИ НА ГЛАВНОМ ЭКРАНЕ */
+        /* Кнопка Инструкция */
         .instruction-banner {
             margin: 15px 20px 25px;
             background: var(--primary-blue);
@@ -115,27 +115,27 @@
         .screenshot-img { height: 350px; border-radius: 15px; border: 1px solid #e5e5ea; object-fit: cover; }
 
         /* СТРАНИЦА ВИДЕО-ИНСТРУКЦИИ */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            background: #000;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; margin-bottom: 20px; background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
         .green-alert { background: #e8f8ee; border: 1px solid #c5ecd4; padding: 15px; border-radius: 15px; display: flex; align-items: flex-start; margin-bottom: 20px; font-size: 14px; line-height: 1.4; color: #2c7a4b; }
         .green-alert span { margin-right: 10px; font-size: 18px; }
+
+        /* СТРАНИЦА ТЕКСТОВОЙ ИНСТРУКЦИИ */
+        .instruction-hero { background: var(--primary-blue); color: white; padding: 25px 20px; border-radius: 20px; margin-bottom: 20px; }
+        .instruction-hero h2 { margin: 0 0 10px 0; font-size: 22px; }
+        .instruction-hero p { margin: 0; font-size: 14px; opacity: 0.9; }
+
+        .step-card { background: var(--card-bg); border-radius: 20px; padding: 20px; margin-bottom: 15px; }
+        .step-header { display: flex; align-items: flex-start; margin-bottom: 10px; }
+        .step-number { background: var(--primary-blue); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0; margin-top: 2px; }
+        .step-title { font-weight: bold; font-size: 18px; line-height: 1.3; }
+        .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px; padding-left: 45px; }
+        .step-image { width: 100%; border-radius: 15px; display: block; margin-bottom: 10px; }
+        
+        /* Кнопка внизу */
+        .btn-bottom { position: fixed; bottom: 20px; left: 20px; right: 20px; background: var(--primary-blue); color: white; text-align: center; padding: 18px; border-radius: 15px; font-weight: bold; font-size: 16px; cursor: pointer; z-index: 100; box-shadow: 0 4px 15px rgba(75, 110, 252, 0.4); }
+        .instruction-content-bottom { padding-bottom: 90px; }
 
         /* Модальное окно (Шторка) */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; align-items: flex-end; }
@@ -143,6 +143,7 @@
         .modal-close { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); background: none; border: none; }
         
         .modal-title { font-size: 20px; font-weight: bold; margin-bottom: 20px; text-align: center; margin-top: 10px; }
+        .modal-video { width: 100%; border-radius: 15px; margin-bottom: 20px; display: block; object-fit: cover; }
         .modal-text { font-size: 15px; line-height: 1.5; margin-bottom: 20px; color: var(--text-main); }
         .modal-alert { background: #e8f8ee; border: 1px solid #c5ecd4; padding: 15px; border-radius: 15px; display: flex; gap: 15px; font-size: 14px; line-height: 1.4; margin-bottom: 20px; color: #2c7a4b; }
         .btn-modal { width: 100%; background: var(--primary-blue); color: white; border: none; padding: 18px; border-radius: 15px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; }
@@ -194,7 +195,6 @@
             </div>
         </div>
 
-        <!-- СИНЯЯ ПЛАШКА "Действия собеседника..." -->
         <div class="banner banner-blue" onclick="openAppDetail('AyuGram')">
             <div class="banner-title">Действия собеседника в телеграмме можете скачать у менеджера</div>
         </div>
@@ -245,7 +245,7 @@
         <div class="detail-container" id="app-detail-content"></div>
     </div>
 
-    <!-- НОВАЯ СТРАНИЦА: ВИДЕО-ИНСТРУКЦИЯ -->
+    <!-- СТРАНИЦА: ВИДЕО-ИНСТРУКЦИЯ -->
     <div id="video-instruction-page" class="page">
         <div class="app-detail-header">
             <button class="back-btn" onclick="showPage('main-page')">←</button>
@@ -253,7 +253,6 @@
         </div>
         
         <div class="detail-container">
-            <!-- Встроенный видеоплеер YouTube -->
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/JWmdFyltvTU" allowfullscreen></iframe>
             </div>
@@ -269,8 +268,74 @@
             </div>
             
             <div style="text-align: center; font-weight: bold; margin-bottom: 15px; margin-top: 20px;">Вы вышли из аккаунта?</div>
-            <button class="btn-main" style="width: 100%;" onclick="showPage('main-page')">Понятно</button>
+            <button class="btn-main" style="width: 100%;" onclick="showPage('text-instruction-page')">Да, я вышел(ла) ➔</button>
         </div>
+    </div>
+
+    <!-- СТРАНИЦА: ТЕКСТОВАЯ ИНСТРУКЦИЯ (ПОШАГОВАЯ) -->
+    <div id="text-instruction-page" class="page">
+        <div class="app-detail-header">
+            <button class="back-btn" onclick="showPage('main-page')">←</button>
+            <h2 style="margin: 0; font-size: 18px;">Как установить</h2>
+        </div>
+        
+        <div class="detail-container instruction-content-bottom">
+            <div class="instruction-hero">
+                <h2>Как установить приложение</h2>
+                <p>Вход только через контент и покупки. iCloud не трогаем.</p>
+            </div>
+
+            <div class="green-alert">
+                <span>🛡️</span>
+                <div><b>iCloud останется подключён.</b> Вы меняете аккаунт только для «Медиаматериалов и покупок». Фото, контакты и заметки останутся в вашем iCloud.</div>
+            </div>
+
+            <!-- Шаг 1 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Выйдите из своей учетной записи Apple</div>
+                </div>
+                <div class="step-desc">В настройках телефона нажмите на своё имя → пролистайте вниз → Выйти → Нажмите выйти, но не стирать.</div>
+                <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0899.jpeg" class="step-image" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Шаг 2 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Войдите с выданными данными</div>
+                </div>
+                <div class="step-desc">В том же разделе нажмите «Медиаматериалы и покупки» и введите логин и пароль выданного аккаунта.</div>
+                <!-- ФОТКА 1 (Настройки) -->
+                <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0900.jpeg" class="step-image" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Шаг 3 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Откройте „Общие приложения“</div>
+                </div>
+                <div class="step-desc">Выберите нужное приложение и нажмите „Установить“.</div>
+                <!-- ФОТКА 2 (Войти вручную) -->
+                <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/E6374BD0-357B-4341-BF4C-204E39CC85E8.png" class="step-image" onerror="this.style.display='none'">
+            </div>
+            
+            <!-- Шаг 4 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Найдите и загрузите приложение</div>
+                </div>
+                <div class="step-desc">Найдите приложение в списке покупок и нажмите значок облака рядом с ним.</div>
+                <!-- ФОТКА 3 (Общие приложения) -->
+                <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0906.jpeg" class="step-image" onerror="this.style.display='none'">
+            </div>
+        </div>
+        
+        <!-- Кнопка внизу -->
+        <div class="btn-bottom" onclick="showPage('search-page')">🛍️ Выбрать приложение</div>
     </div>
 
     <!-- МОДАЛЬНОЕ ОКНО (КРАТКАЯ ИНСТРУКЦИЯ ИЗ КАРТОЧКИ) -->
@@ -405,7 +470,6 @@
 
                 <div class="detail-buttons">
                     <button class="btn-main" onclick="openModal()">⬇️ Получить аккаунт</button>
-                    <!-- Маленькая кнопка инструкции ведет на страницу с видео -->
                     <button class="btn-sec" onclick="showPage('video-instruction-page')">📖 Инструкция</button>
                 </div>
 
