@@ -1,0 +1,12 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Админ-панель</title><link rel="stylesheet" href="/static/style.css">
+<style>
+main{max-width:850px}.panel,.item{background:white;border:1px solid #e5eaf2;border-radius:18px;padding:18px;margin:14px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}input,textarea,select{width:100%;padding:12px;border:1px solid #dce3ef;border-radius:11px;font:inherit;margin:5px 0 12px}textarea{min-height:80px}.primary,.danger{border:0;padding:11px 15px;border-radius:12px;color:white;background:#3164f4;font-weight:700}.danger{background:#d94b58}.item{display:flex;justify-content:space-between;gap:12px;align-items:center}.item small{color:#78849a}@media(max-width:600px){.grid{grid-template-columns:1fr}.item{align-items:flex-start;flex-direction:column}}
+</style></head><body><header><div class="brand">⚙️ Админ-панель</div><div class="sub">Управление каталогом</div></header><main>
+<div class="panel"><h2 id="formTitle">Добавить приложение</h2><form id="form">
+<div class="grid"><label>Название<input name="name" required maxlength="100"></label><label>Категория<select name="category" id="category"></select></label>
+<label>Рейтинг (0–5)<input name="rating" type="number" min="0" max="5" step=".1" value="0"></label><label>Размер<input name="size" placeholder="Например, 35 МБ"></label></div>
+<label>Описание<textarea name="description" maxlength="1000"></textarea></label>
+<label>URL иконки<input name="icon_url" placeholder="https://..."></label><label>Ссылка на официальный источник<input name="official_url" placeholder="https://..."></label>
+<button class="primary" type="submit">Сохранить</button> <button type="button" id="cancel" class="primary" style="background:#8994a7">Сбросить</button>
+</form><p id="status" class="muted"></p></div>
+<h2>Приложения в каталоге</h2><section id="list"></section></main><script src="/static/admin.js"></script></body></html>
