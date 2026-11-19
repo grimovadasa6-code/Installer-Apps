@@ -122,7 +122,8 @@
             </div>
         </div>
 
-        <div class="banner banner-blue" onclick="window.Telegram.WebApp.showAlert('Напишите менеджеру: @Installer_Apps')">
+        <!-- ИЗМЕНЕНО: Теперь при клике открывается AyuGram -->
+        <div class="banner banner-blue" onclick="openAppDetail('AyuGram')">
             <div class="banner-title">Действия собеседника в телеграмме можете скачать у менеджера</div>
         </div>
 
@@ -285,7 +286,7 @@
                             <div class="step-title">Выйдите из своего аккаунта App Store</div>
                         </div>
                         <div class="step-desc">В настройках телефона нажмите на своё имя → пролистайте вниз → Выйти → Нажмите выйти, но не стирать.</div>
-                        <!-- Сюда вставите картинку 1 -->
+                        <!-- Место для картинки 1 -->
                         <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8544.jpeg" class="step-image" onerror="this.style.display='none'">
                     </div>
 
@@ -295,7 +296,7 @@
                             <div class="step-title">Войдите с выданными данными</div>
                         </div>
                         <div class="step-desc">В том же разделе нажмите «Медиаматериалы и покупки» и введите логин и пароль выданного аккаунта.</div>
-                        <!-- Сюда вставите картинку 2 -->
+                        <!-- Место для картинки 2 -->
                         <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8541.jpeg" class="step-image" onerror="this.style.display='none'">
                     </div>
 
@@ -305,7 +306,7 @@
                             <div class="step-title">Откройте „Общие приложения“</div>
                         </div>
                         <div class="step-desc">Выберите нужное приложение и нажмите „Установить“.</div>
-                        <!-- Сюда вставите картинку 3 -->
+                        <!-- Место для картинки 3 -->
                         <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8542.webp" class="step-image" onerror="this.style.display='none'">
                     </div>
                     
@@ -315,7 +316,7 @@
                             <div class="step-title">Найдите и загрузите приложение</div>
                         </div>
                         <div class="step-desc">Найдите приложение в списке покупок и нажмите значок облака рядом с ним.</div>
-                        <!-- Сюда вставите картинку 4 -->
+                        <!-- Место для картинки 4 -->
                         <img src="https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8544.jpeg" class="step-image" onerror="this.style.display='none'">
                     </div>
                 </div>
@@ -331,7 +332,6 @@
 
         // ЛОГИКА ЗАГРУЗКИ ПРИ НАЖАТИИ НА "ПОЛУЧИТЬ АККАУНТ"
         function showLoadingAndRedirect() {
-            // Вместо модального окна мы просто делаем имитацию загрузки (например, меняем текст кнопки)
             const btn = document.querySelector('.btn-main');
             const originalText = btn.innerHTML;
             
