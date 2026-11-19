@@ -1,0 +1,60 @@
+Фото, контакты и заметки останутся в вашем iCloud.</div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Выйдите из своего аккаунта App Store</div>
+            </div>
+            <div class="step-desc">В настройках телефона нажмите на своё имя → пролистайте вниз → Выйти → Нажмите выйти, но не стирать.</div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Войдите с выданными данными</div>
+            </div>
+            <div class="step-desc">В том же разделе нажмите «Медиаматериалы и покупки» и введите логин и пароль выданного аккаунта App Store. Не входите в iCloud.</div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Откройте „Общие приложения“</div>
+            </div>
+            <div class="step-desc">Выберите нужное приложение и нажмите „Установить“.</div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div class="step-title">Найдите и загрузите приложение</div>
+            </div>
+            <div class="step-desc">Найдите приложение в списке покупок и нажмите значок облака рядом с ним.</div>
+        </div>
+    </div>
+
+    <div class="bottom-btn" onclick="showPage('search-page')">
+        🛍️ Выбрать приложение
+    </div>
+</div>
+
+<!-- СКРИПТЫ -->
+<script>
+    // Инициализация Telegram WebApp
+    let tg = window.Telegram.WebApp;
+    tg.expand(); // Разворачиваем на весь экран
+
+    // Функция переключения страниц
+    function showPage(pageId) {
+        // Скрываем все страницы
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        // Показываем нужную
+        document.getElementById(pageId).classList.add('active');
+        
+        // Прокручиваем наверх при смене страницы
+        window.scrollTo(0, 0);
+    }
+</script>
