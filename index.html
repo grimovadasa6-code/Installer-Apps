@@ -391,23 +391,20 @@
             closeModal();
             document.getElementById('loading-modal').style.display = 'flex';
             
+            // Формируем текст сообщения
             const messageText = `Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`;
             
-            // 1. Тихо копируем в буфер обмена
-            navigator.clipboard.writeText(messageText).catch(err => console.log(err));
-
-            // 2. Ждем 1.5 секунды (загрузка) и перекидываем
+            // Ждем 1.5 секунды для эффекта загрузки
             setTimeout(() => {
                 document.getElementById('loading-modal').style.display = 'none';
                 
-                // Ссылка на ЧЕЛОВЕКА (менеджера) с параметром ?text=
-                // Это заставит Telegram открыть чат и ВСТАВИТЬ текст в поле ввода
+                // Прямая ссылка с параметром ?text= для автовставки
                 const tgLink = `https://t.me/Installer_Apps?text=${encodeURIComponent(messageText)}`;
                 
                 // Открываем ссылку
-                tg.openTelegramLink(tgLink);
+                window.location.href = tgLink;
                 
-            }, 1500); // 1.5 секунды
+            }, 1500); 
         }
     </script>
 </body>
