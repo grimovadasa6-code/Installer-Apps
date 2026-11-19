@@ -32,16 +32,20 @@ const apps = [
         ]
     },
     { 
-        name: 'Wildberries', desc: 'Шоппинг · Маркетплейс', rating: '4.4', count: '690 тыс.', bg: '#CB11AB', letter: 'W', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8557.jpeg', cat: 'shopping', fullDesc: 'Wildberries — самый крупный международный маркетплейс.'
+        name: 'Wildberries', desc: 'Шоппинг · Маркетплейс', rating: '4.4', count: '690 тыс.', bg: '#CB11AB', letter: 'W', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8557.jpeg', cat: 'shopping', fullDesc: 'Wildberries — самый крупный международный маркетплейс.',
+        screenshots: []
     },
     { 
-        name: 'Госуслуги', desc: 'Утилиты · Госуслуги', rating: '4.3', count: '320 тыс.', bg: '#0A55F0', letter: 'Г', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8536.jpeg', cat: 'services', fullDesc: 'Госуслуги — единый портал государственных услуг.'
+        name: 'Госуслуги', desc: 'Утилиты · Госуслуги', rating: '4.3', count: '320 тыс.', bg: '#0A55F0', letter: 'Г', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8536.jpeg', cat: 'services', fullDesc: 'Госуслуги — единый портал государственных услуг.',
+        screenshots: []
     },
     { 
-        name: 'Генератор ИИ видео', desc: 'ИИ · Видео', rating: '4.6', count: '76 тыс.', bg: '#333333', letter: 'Г', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8535.jpeg', cat: 'fun', fullDesc: 'Мощный инструмент на базе искусственного интеллекта для создания уникальных видеороликов.'
+        name: 'Генератор ИИ видео', desc: 'ИИ · Видео', rating: '4.6', count: '76 тыс.', bg: '#333333', letter: 'Г', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8535.jpeg', cat: 'fun', fullDesc: 'Мощный инструмент на базе искусственного интеллекта для создания уникальных видеороликов.',
+        screenshots: []
     },
     { 
-        name: 'Dino Run', desc: 'Игры · Аркада', rating: '4.5', count: '88 тыс.', bg: '#4CAF50', letter: 'D', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8545.jpeg', cat: 'fun', fullDesc: 'Классический раннер с динозавриком!'
+        name: 'Dino Run', desc: 'Игры · Аркада', rating: '4.5', count: '88 тыс.', bg: '#4CAF50', letter: 'D', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8545.jpeg', cat: 'fun', fullDesc: 'Классический раннер с динозавриком!',
+        screenshots: []
     },
     { 
         name: 'Happ Plus VPN', desc: 'VPN', rating: '4.9', count: '1.1 тыс.', bg: '#333', letter: 'H', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8547.jpeg', cat: 'services', fullDesc: 'Быстрый и надежный VPN-клиент для обхода блокировок.',
@@ -84,7 +88,8 @@ const apps = [
         ]
     },
     { 
-        name: 'Spotify', desc: 'Развлечения', rating: '4', count: '1,3 тыс.', bg: '#1DB954', letter: 'S', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8554.jpeg', cat: 'fun', fullDesc: 'Spotify — популярный стриминговый сервис.'
+        name: 'Spotify', desc: 'Развлечения', rating: '4', count: '1,3 тыс.', bg: '#1DB954', letter: 'S', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8554.jpeg', cat: 'fun', fullDesc: 'Spotify — популярный стриминговый сервис.',
+        screenshots: []
     },
     { 
         name: 'Т-Банк', desc: 'Финансы · Т-Банк', rating: '4.8', count: '1,2 млн', bg: '#FFDD2D', letter: 'Т', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8539.jpeg', cat: 'banks', fullDesc: 'Т-Банк — современный онлайн-банк.',
@@ -95,10 +100,12 @@ const apps = [
         ]
     },
     { 
-        name: 'TikTok (Mod)', desc: 'Соцсети · Видео', rating: '4.6', count: '3,2 млн', bg: '#000', letter: 'T', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8555.jpeg', cat: 'social', fullDesc: 'Модифицированная версия TikTok без водяных знаков.'
+        name: 'TikTok (Mod)', desc: 'Соцсети · Видео', rating: '4.6', count: '3,2 млн', bg: '#000', letter: 'T', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8555.jpeg', cat: 'social', fullDesc: 'Модифицированная версия TikTok без водяных знаков.',
+        screenshots: []
     },
     { 
-        name: 'ChatGPT PRO', desc: 'ИИ · Ассистент', rating: '4.8', count: '1,5 млн', bg: '#000', letter: 'C', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8544.jpeg', cat: 'services', fullDesc: 'ChatGPT PRO — ваш персональный ИИ-ассистент.'
+        name: 'ChatGPT PRO', desc: 'ИИ · Ассистент', rating: '4.8', count: '1,5 млн', bg: '#000', letter: 'C', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8544.jpeg', cat: 'services', fullDesc: 'ChatGPT PRO — ваш персональный ИИ-ассистент.',
+        screenshots: []
     },
     { 
         name: 'Чат Рулетка', desc: 'Общение', rating: '5', count: '32 тыс.', bg: '#336699', letter: 'Ч', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8540.png', cat: 'social', fullDesc: 'Чат Рулетка — отличный способ познакомиться с новыми людьми.',
@@ -115,7 +122,8 @@ const apps = [
         ]
     },
     { 
-        name: 'Яндекс', desc: 'Утилиты · Поиск', rating: '4.7', count: '450 тыс.', bg: '#FF0000', letter: 'Я', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8541.jpeg', cat: 'services', fullDesc: 'Главное приложение Яндекса.'
+        name: 'Яндекс', desc: 'Утилиты · Поиск', rating: '4.7', count: '450 тыс.', bg: '#FF0000', letter: 'Я', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8541.jpeg', cat: 'services', fullDesc: 'Главное приложение Яндекса.',
+        screenshots: []
     },
     { 
         name: 'ВК Видео', desc: 'Развлечения · ВК', rating: '4.6', count: '182,6 тыс.', bg: '#0077FF', letter: 'В', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8532.jpeg', cat: 'fun', fullDesc: 'ВК Видео — огромная библиотека фильмов, сериалов и клипов.',
@@ -139,7 +147,8 @@ const apps = [
         ]
     },
     { 
-        name: 'Nulls Brawl', desc: 'Игры · Приватный сервер', rating: '4.6', count: '540 тыс.', bg: '#2196F3', letter: 'N', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8551.jpeg', cat: 'fun', fullDesc: 'Nulls Brawl — популярный приватный сервер Brawl Stars.'
+        name: 'Nulls Brawl', desc: 'Игры · Приватный сервер', rating: '4.6', count: '540 тыс.', bg: '#2196F3', letter: 'N', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8551.jpeg', cat: 'fun', fullDesc: 'Nulls Brawl — популярный приватный сервер Brawl Stars.',
+        screenshots: []
     },
     { 
         name: 'AyuGram', desc: 'Моды Telegram · Клиент', rating: '4.8', count: '45 тыс.', bg: '#6C5CE7', letter: 'A', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8543.jpeg', cat: 'social', fullDesc: 'AyuGram — продвинутый клиент Telegram.',
@@ -150,7 +159,8 @@ const apps = [
         ]
     },
     { 
-        name: 'HakoGram', desc: 'Моды Telegram · Клиент', rating: '4.7', count: '32 тыс.', bg: '#0984E3', letter: 'H', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8546.png', cat: 'social', fullDesc: 'HakoGram — стильный и функциональный клиент Telegram.'
+        name: 'HakoGram', desc: 'Моды Telegram · Клиент', rating: '4.7', count: '32 тыс.', bg: '#0984E3', letter: 'H', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8546.png', cat: 'social', fullDesc: 'HakoGram — стильный и функциональный клиент Telegram.',
+        screenshots: []
     },
     { 
         name: 'СберKids', desc: 'Финансы · Детям', rating: '4.5', count: '120 тыс.', bg: '#00B894', letter: 'С', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8538.jpeg', cat: 'banks', fullDesc: 'СберKids — приложение для детей и их родителей.',
@@ -169,9 +179,11 @@ const apps = [
         ]
     },
     { 
-        name: 'Brawl Stars', desc: 'Игры · Экшн', rating: '4.6', count: '1,8 млн', bg: '#FFD700', letter: 'B', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0794.jpeg', cat: 'fun', fullDesc: 'Brawl Stars — динамичная мобильная игра от Supercell.'
+        name: 'Brawl Stars', desc: 'Игры · Экшн', rating: '4.6', count: '1,8 млн', bg: '#FFD700', letter: 'B', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0794.jpeg', cat: 'fun', fullDesc: 'Brawl Stars — динамичная мобильная игра от Supercell.',
+        screenshots: []
     },
     { 
-        name: 'Tele 2', desc: 'Финансы', rating: '4.6', count: '355 тыс.', bg: '#000', letter: 't2', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0795.jpeg', cat: 'banks', fullDesc: 'Tele2 — приложение мобильного оператора.'
+        name: 'Tele 2', desc: 'Финансы', rating: '4.6', count: '355 тыс.', bg: '#000', letter: 't2', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0795.jpeg', cat: 'banks', fullDesc: 'Tele2 — приложение мобильного оператора.',
+        screenshots: []
     }
 ];
