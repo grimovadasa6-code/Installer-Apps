@@ -371,7 +371,7 @@
        container.innerHTML += `
         <div class="app-item" onclick="openApp('${app.desc}', '${app.count}', '${app.letter}', '${app.img || ''}')">
           <div class="значок приложения" style="background:${app.bg}; overflow:hidden;">${app.img ? <img src="${app.img}" style="width:100%; height:100%; object-fit:cover; border-radius:15px;"> : app.letter}</div>
-          <div class="app-info"><div class="app-
+          </div>
           <button class="btn-get">Получить</button>
         </div>
       `;
