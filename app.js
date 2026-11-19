@@ -1,5 +1,5 @@
 const apps = [
-    // --- Приложения с картинками (по вашим ссылкам) ---
+    // --- Приложения с картинками ---
     { name: 'Авито', desc: 'Шоппинг · Объявления', rating: '4.5', count: '540 тыс.', bg: '#FF5A5F', letter: 'А', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0793.jpeg' },
     { name: 'Альфа-Банк', desc: 'Финансы · Альфа', rating: '4.7', count: '225 тыс.', bg: '#EF3124', letter: 'А', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8531.jpeg' },
     { name: 'ВКонтакте', desc: 'Соцсети · ВК', rating: '4.5', count: '900 тыс.', bg: '#0077FF', letter: 'В', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8533.jpeg' },
@@ -24,17 +24,12 @@ const apps = [
     { name: 'Minecraft', desc: 'Игры · Песочница', rating: '4.7', count: '2.1 млн', bg: '#795548', letter: 'M', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8550.jpeg' },
     { name: 'Mail', desc: 'Соцсети · Почта', rating: '4.7', count: '2.1 млн', bg: '#005FF9', letter: 'M', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8548.png' },
     { name: 'Nulls Brawl', desc: 'Игры · Приватный сервер', rating: '4.6', count: '540 тыс.', bg: '#2196F3', letter: 'N', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8551.jpeg' },
-    
-    // --- Новые картинки ---
     { name: 'AyuGram', desc: 'Моды Telegram · Клиент', rating: '4.8', count: '45 тыс.', bg: '#6C5CE7', letter: 'A', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8543.jpeg' },
     { name: 'HakoGram', desc: 'Моды Telegram · Клиент', rating: '4.7', count: '32 тыс.', bg: '#0984E3', letter: 'H', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8546.png' },
     { name: 'СберKids', desc: 'Финансы · Детям', rating: '4.5', count: '120 тыс.', bg: '#00B894', letter: 'С', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8538.jpeg' },
     { name: 'VK Знакомства', desc: 'Соцсети', rating: '4.7', count: '31,6 тыс.', bg: '#FF4081', letter: 'V', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_8556.png' },
-
-    // --- Приложения БЕЗ картинок (останутся буквы) ---
-    { name: 'MangaLib', desc: 'Книги', rating: '4.6', count: '512', bg: '#FF9800', letter: 'M' },
-    { name: 'Stand Rise', desc: 'Игры · Шутер', rating: '4.4', count: '210 тыс.', bg: '#9E9E9E', letter: 'S' },
-    { name: 'Tele 2', desc: 'Финансы', rating: '4.6', count: '355 тыс.', bg: '#000', letter: 't2' },
-    { name: 'Five Nights at Freddy\'s', desc: 'Игры · Хоррор', rating: '4.5', count: '320 тыс.', bg: '#8B4513', letter: 'F' },
-    { name: 'Brawl Stars', desc: 'Игры · Экшн', rating: '4.6', count: '1,8 млн', bg: '#FFD700', letter: 'B' }
+    
+    // --- Новые добавленные с картинками ---
+    { name: 'Brawl Stars', desc: 'Игры · Экшн', rating: '4.6', count: '1,8 млн', bg: '#FFD700', letter: 'B', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0794.jpeg' },
+    { name: 'Tele 2', desc: 'Финансы', rating: '4.6', count: '355 тыс.', bg: '#000', letter: 't2', img: 'https://raw.githubusercontent.com/grimovadasa6-code/Installer-Apps/main/IMG_0795.jpeg' }
 ];
